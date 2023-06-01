@@ -29,7 +29,8 @@ export const App = () => {
     if (name === "") {
       return
     }
-    
+    setStatus(Status.PENDING)
+
     fetchPictures(name, page)
       .then(({ hits }) => (setPictures(pictures => [...pictures, ...hits]), setStatus(Status.RESOLVED)))
       .catch(error => { setError(error); setStatus(Status.REJECTED) } );
@@ -51,7 +52,7 @@ export const App = () => {
         <Searchbar onSubmit={ handleSearchFormSubmit} />
     
     { status === 'pending' && <Loader /> }
-    { status === 'resolved' && <ImageGallery pictures={pictures}  /> }
+    { pictures.length !== 0 && <ImageGallery pictures={pictures}  /> }
         {status === 'rejected' && <ImageErrorView message={error.message} />} 
         {pictures.length !== 0 && (pictures.length /12) === page && <Button LoadMoreBtnClick={handleLoadMoreBtnClick} />}
       </Wrapper>

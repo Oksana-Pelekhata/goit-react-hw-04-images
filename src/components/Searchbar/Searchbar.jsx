@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { Component } from 'react';
 import { ImSearch } from 'react-icons/im';
 import {Form, SearchbarHeader, SearchButton, SearchButtonLabel, SearchInput} from './Searchbar.styled'
 

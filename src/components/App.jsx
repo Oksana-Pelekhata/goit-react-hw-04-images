@@ -32,7 +32,7 @@ export const App = () => {
     setStatus(Status.PENDING)
 
     fetchPictures(name, page)
-      .then(({ hits }) => (setPictures(pictures => [...pictures, ...hits]), setStatus(Status.RESOLVED)))
+      .then(({ hits }) => { setPictures(pictures => [...pictures, ...hits]); setStatus(Status.RESOLVED) })
       .catch(error => { setError(error); setStatus(Status.REJECTED) } );
   },[name, page])
 
